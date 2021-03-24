@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" controller="AccountRecord_Controller" access="global" >
+    <aura:attribute name="mycolumn" type="Object[]"/>
+    <aura:attribute name="ListAccounts" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.fetchData}"/>
+    <aura:attribute name="title" type="String" default="Recent Accounts"/>
+    <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="standard:account" size="medium"/>
+            {! v.title }
+        </aura:set>
+    <lightning:datatable data="{!v.ListAccounts }" 
+                         columns="{!v.mycolumn }" 
+                         keyField="id"
+                         hideCheckboxColumn="false" />
+</lightning:card>
+
+</aura:component>
